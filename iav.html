@@ -1,0 +1,157 @@
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Map de IAV Hassan II</title>
+  <link rel="stylesheet" href="leaflet.css">
+  <script src="leaflet.js"></script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 150; /* tu peux mettre 0 si tu veux enlever la marge */
+    }
+    .leaflet-container {
+      height: 800px;
+      width: 800px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map" style="width: 700px; height: 900px;"></div>
+
+<script>
+  const map = L.map('map').setView([33.9765374,-6.8668853], 16);
+
+  const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  const marker = L.marker([33.9765374,-6.8668853]).addTo(map)
+    .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+  const circle = L.circle([33.9765374,-6.8668853], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 5
+  }).addTo(map).bindPopup('position precision');
+
+  /* --- ICI: popup avec image --- */
+  const polygon0 = L.polygon([
+    [33.97620244,-6.86710121],
+    [33.97634924,-6.86730964],
+    [33.97651615,-6.86714828],
+    [33.97650094,-6.86711065],
+    [33.97659856,-6.86702574],
+    [33.97669458,-6.86715696],
+    [33.97676899,-6.86708845],
+    [33.97674259,-6.86703635],
+    [33.97681500,-6.86695868],
+    [33.97675879,-6.86687015],
+    [33.97683261,-6.86679561],
+    [33.97670598,-6.86659660],
+    [33.97662617,-6.86666873],
+    [33.97657596,-6.86659708],
+    [33.97650034,-6.86667210],
+    [33.97655795,-6.86676473],
+    [33.97653395,-6.86678500],
+    [33.97644113,-6.86664870],
+    [33.97632751,-6.86676087],
+    [33.97641873,-6.86690657],
+    [33.97637952,-6.86693371]
+  ]).addTo(map).bindPopup(
+    `
+    <div style="width:260px">
+      <strong>Département des sciences géomatique et ingénierie topographique</strong>
+      <img src="./images/ESGIT.png" alt="ESGIT"
+           style="width:50%;height:auto;display:block;margin-top:6px;border-radius:6px;">
+      <small>Cliquer l’image pour l’agrandir (ouvrir dans un nouvel onglet si besoin)</small>
+    </div>
+    `,
+    { maxWidth: 280 }
+  );
+
+  const polygon1 = L.polygon([
+    [33.976943, -6.866123],
+    [33.977010, -6.865880],
+    [33.976789, -6.865767],
+    [33.976721, -6.866035]
+  ]).addTo(map).bindPopup('Building Center');
+
+  const polygon2 = L.polygon([
+    [33.977286710423485, -6.8657199993898],
+    [33.97718733226483, -6.865867563089036],
+    [33.97721403088604, -6.865895287177983],
+    [33.97719178203561, -6.86593016587053],
+    [33.977300059719525, -6.86603927357542],
+    [33.97738375744646, -6.865917703344864],
+    [33.97739298921443, -6.865826168951706]
+  ]).addTo(map).bindPopup('Département Génie Rural'); 
+    
+      const polygon3 = L.polygon([
+    [33.97904312378803, -6.86387539241321],
+    [33.97882973105774, -6.863515579796704],
+    [33.978669214049226, -6.863661326679338],
+    [33.978897714640574, -6.86401203011568]
+  ]).addTo(map).bindPopup('Département d Agronomie');
+
+      const polygon4 = L.polygon([
+    [33.979183477130555, -6.863182446406212],
+    [33.97939760980521, -6.863534367380983],
+    [33.979545417885426, -6.86339268491062],
+    [33.97933697051847, -6.8630384787347145]
+  ]).addTo(map).bindPopup('Département des sciences humaines');
+
+   /*   const polygon5 = L.polygon([
+    [33.979183477130555, -6.863182446406212],
+    [33.97939760980521, -6.863534367380983],
+    [33.979545417885426, -6.86339268491062],
+    [33.97933697051847, -6.8630384787347145]
+  ]).addTo(map).bindPopup('Département des sciences humaines');
+
+      const polygon4 = L.polygon([
+    [33.979183477130555, -6.863182446406212],
+    [33.97939760980521, -6.863534367380983],
+    [33.979545417885426, -6.86339268491062],
+    [33.97933697051847, -6.8630384787347145]
+  ]).addTo(map).bindPopup('Département des sciences humaines');
+
+      const polygon4 = L.polygon([
+    [33.979183477130555, -6.863182446406212],
+    [33.97939760980521, -6.863534367380983],
+    [33.979545417885426, -6.86339268491062],
+    [33.97933697051847, -6.8630384787347145]
+  ]).addTo(map).bindPopup('Département des sciences humaines');
+
+      const polygon4 = L.polygon([
+    [33.979183477130555, -6.863182446406212],
+    [33.97939760980521, -6.863534367380983],
+    [33.979545417885426, -6.86339268491062],
+    [33.97933697051847, -6.8630384787347145]
+  ]).addTo(map).bindPopup('Département des sciences humaines');
+*/
+
+  const popup = L.popup()
+    .setLatLng([33.9765374,-6.8668853])
+    .setContent('I am a standalone popup.')
+    .openOn(map);
+
+  function onMapClick(e) {
+    popup
+      .setLatLng(e.latlng)
+      .setContent(`You clicked the map at ${e.latlng.toString()}`)
+      .openOn(map);
+  }
+
+  map.on('click', onMapClick);
+</script>
+
+</body>
+</html>
